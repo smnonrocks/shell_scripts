@@ -63,7 +63,7 @@ scp Automation.zip enterprisedb@x.x.x.x:/opt/etrans/backup
  sh my_script.sh
  sh psql_env.sh
  cd /opt/PostgresPlus/9.1AS/Desktop/crons
-scp enterprisedb@14.140.228.94:/opt/etrans/backup/tbl_lastdata.sql.zip .
+scp enterprisedb@X.X.X.X:/opt/etrans/backup/tbl_lastdata.sql.zip .
 unzip -o tbl_lastdata.sql.zip
 echo "truncate table syn_lastdata;"| psql
 psql < tbl_lastdata.sql
