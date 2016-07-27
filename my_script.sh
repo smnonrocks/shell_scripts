@@ -14,7 +14,7 @@
 ##########################################################################################
 echo "------------MIGRATAION IN INTEGRATION WILL START SHORTLY PLEASE WT---------------------"
 c=0
-#ssh enterprisedb@14.140.228.94 << ENDSSH
+#ssh enterprisedb@X.X.X.X << ENDSSH
  cd /opt/etrans/backup/
  unzip -o Automation.zip
  cd /opt/etrans/cronjobs/
