@@ -13,7 +13,7 @@
 # Subhankar Neogi	07/02/2014	  forcemap table addition
 ##########################################################################################
 c=0
-ssh oracle@203.197.114.67 << ENDSSH
+ssh oracle@x.x.x.x << ENDSSH
 	echo "EXEC sp_Export ('TBL_MST_ENTITY','UGM','tbl_mst_entity.txt','~');" | sqlplus trip/trip@gpstrn
 	echo "EXEC sp_Export ('TBL_MONTH_SERVICE','SUBSC','tbl_month_service.txt','~');" | sqlplus trip/trip@gpstrn
 	echo "EXEC sp_Export ('TBL_LOCATION_MASTER','TRIP','tbl_location_master.txt','~');" | sqlplus trip/trip@gpstrn
@@ -52,7 +52,7 @@ ssh oracle@203.197.114.67 << ENDSSH
 	# tar -cvf v3_migration.tar v3_migration
 ENDSSH
 
-scp oracle@203.197.114.67:/oracle01/oracle/v2/reports/db_process_log/v3_migration.zip /opt/PostgresPlus/9.1AS/Desktop/flat_file
+scp oracle@X.X.X.X:/oracle01/oracle/v2/reports/db_process_log/v3_migration.zip /opt/PostgresPlus/9.1AS/Desktop/flat_file
 
 cd /opt/PostgresPlus/9.1AS/Desktop/flat_file
 unzip -o v3_migration.zip
@@ -115,7 +115,7 @@ mv tbl_amc_activity_tmp.txt tbl_amc_activity.txt
 
 cd /opt/PostgresPlus/9.1AS/Desktop/crons
 source psql_env.sh
-psql $etrans <<END
+psql $env <<END
 	----------- start of entity migration-----------
 	select 'ENTITY MIGRATION STARTED';
 	drop table schema_v3.tbl_mst_entity_bak;
