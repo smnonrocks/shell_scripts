@@ -20,19 +20,19 @@ cd /opt/PostgresPlus/9.1AS/Desktop/crons
 	
 rm -fr /opt/PostgresPlus/9.1AS/Desktop/Automation
 mkdir /opt/PostgresPlus/9.1AS/Desktop/Automation
-pg_dump -a --format=plain --table=v4reg.tbl_entity --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_entity.sql
-pg_dump -a --format=plain --table=v4reg.tbl_asset --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_asset.sql
-pg_dump -a --format=plain --table=v4subsc.tbl_month_service --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_month_service.sql
-pg_dump -a --format=plain --table=v4stock.tbl_device_stock --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_device_stock.sql
-pg_dump -a --format=plain --table=v4map.tbl_node --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_node.sql
-pg_dump -a --format=plain --table=migration.tbl_node_entity_map --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_node_entity_map.sql
-pg_dump -a --format=plain --table=V4TRIP.TBL_MAINTAIN --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_maintain.sql
-pg_dump -a --format=plain --table=v4reg.tbl_user --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_user.sql
-pg_dump -a --format=plain --table=v4ugm.tbl_user_role --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_user_role.sql
-pg_dump -a --format=plain --table=v4ugm.tbl_role --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_role.sql
-pg_dump -a --format=plain --table=v4subsc.tbl_amc_activity --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_amc_activity.sql
-pg_dump -a --format=plain --table=v4ugm.tbl_role_service --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_role_service.sql
-pg_dump -a --format=plain --table=v4ugm.tbl_entity_association --inserts --attribute-inserts etrans > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_entity_association.sql
+pg_dump -a --format=plain --table=v4reg.tbl_entity --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_entity.sql
+pg_dump -a --format=plain --table=v4reg.tbl_asset --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_asset.sql
+pg_dump -a --format=plain --table=v4subsc.tbl_month_service --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_month_service.sql
+pg_dump -a --format=plain --table=v4stock.tbl_device_stock --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_device_stock.sql
+pg_dump -a --format=plain --table=v4map.tbl_node --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_node.sql
+pg_dump -a --format=plain --table=migration.tbl_node_entity_map --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_node_entity_map.sql
+pg_dump -a --format=plain --table=V4TRIP.TBL_MAINTAIN --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_maintain.sql
+pg_dump -a --format=plain --table=v4reg.tbl_user --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_user.sql
+pg_dump -a --format=plain --table=v4ugm.tbl_user_role --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_user_role.sql
+pg_dump -a --format=plain --table=v4ugm.tbl_role --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_role.sql
+pg_dump -a --format=plain --table=v4subsc.tbl_amc_activity --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_amc_activity.sql
+pg_dump -a --format=plain --table=v4ugm.tbl_role_service --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_role_service.sql
+pg_dump -a --format=plain --table=v4ugm.tbl_entity_association --inserts --attribute-inserts dbname > /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_entity_association.sql
 
 
 sed -i 's/v4reg/migration/g' /opt/PostgresPlus/9.1AS/Desktop/Automation/tbl_entity.sql
@@ -52,7 +52,7 @@ cd /opt/PostgresPlus/9.1AS/Desktop/
 zip -r Automation.zip Automation
 
 scp Automation.zip subhankar@192.168.10.109:/home/subhankar/Desktop/NEW_DATA
-scp Automation.zip enterprisedb@x.x.x.x:/opt/etrans/backup
+scp Automation.zip enterprisedb@x.x.x.x:/opt/backup
 
 #rm -fr /opt/PostgresPlus/9.1AS/Desktop/Automation
 #rm -fr Automation.zip
@@ -63,7 +63,7 @@ scp Automation.zip enterprisedb@x.x.x.x:/opt/etrans/backup
  sh my_script.sh
  sh psql_env.sh
  cd /opt/PostgresPlus/9.1AS/Desktop/crons
-scp enterprisedb@X.X.X.X:/opt/etrans/backup/tbl_lastdata.sql.zip .
+scp enterprisedb@X.X.X.X:/opt/backup/tbl_lastdata.sql.zip .
 unzip -o tbl_lastdata.sql.zip
 echo "truncate table syn_lastdata;"| psql
 psql < tbl_lastdata.sql
