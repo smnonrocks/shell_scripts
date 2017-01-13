@@ -15,9 +15,9 @@
 echo "------------MIGRATAION IN INTEGRATION WILL START SHORTLY PLEASE WT---------------------"
 c=0
 #ssh enterprisedb@X.X.X.X << ENDSSH
- cd /opt/etrans/backup/
+ cd /opt/backup/
  unzip -o Automation.zip
- cd /opt/etrans/cronjobs/
+ cd /opt/cronjobs/
  source psql_env.sh
  c=$(echo "select 'MARKER '||count(*) from migration.tbl_entity" | psql | grep MARKER |awk '{print $2}')
  	if [ $c -ge 0 ] 
@@ -97,7 +97,7 @@ c=0
  		echo "Truncate table migration.tbl_entity_association;"| psql
   		echo "Total count in migration.tbl_entity_association is $c"		
  	fi		
- cd /opt/etrans/backup/Automation
+ cd /opt/backup/Automation
  	echo "tbl_entity"
  	psql < tbl_entity.sql
  	echo "tbl_asset" 	
